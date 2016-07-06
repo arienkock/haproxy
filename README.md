@@ -1,4 +1,5 @@
-A fork of the official HAProxy Docker image. The usage is identical, see https://hub.docker.com/_/haproxy/
+A fork of the official HAProxy Docker image with a newer OpenSSL so we can use ALPN for HTTP/2. Only version HAProxy 1.6 is built. The usage is identical to the original, see https://hub.docker.com/_/haproxy/
+With the obvious exception that the image name should be `arienkock/haproxy-alpn`.
 
 Built with OpenSSL 1.0.2h as can be seen by running:
 
