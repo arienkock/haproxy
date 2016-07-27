@@ -1,9 +1,37 @@
-A fork of the official HAProxy Docker image with a newer OpenSSL so we can use ALPN for HTTP/2. Only version HAProxy 1.6 is built. The usage is identical to the original, see https://hub.docker.com/_/haproxy/
+# Intro
+A fork of the official HAProxy Docker image with a newer OpenSSL so we can use ALPN for HTTP/2. Only version HAProxy 1.6 is built. 
+
+# Usage
+The usage is identical to the original, see https://hub.docker.com/_/haproxy/
 With the obvious exception that the image name should be `arienkock/haproxy-alpn`.
+
+## Reloading
+As the official image README suggests, using signals you can reload the configuration for near-zero-downtime updates. However, __!!!IMPORTANT!!!__: if you mount the haproxy .cfg file as a file mount instead of a directory mount in Docker, changes will not be reflected and reloading will simply pick up the old config. That's because the container gets a COPY of the file if you mount a file rather than a directory containing the cfg file. Here is an example _Systemd_ service file you can use.
+
+```
+[Unit]
+Description=HAProxy
+After=docker.service
+
+[Service]
+ExecStart=/usr/bin/docker run --rm --name %n -t \
+  -p 80:80 -p 443:443 \
+  -v /etc/haproxy:/usr/local/etc/haproxy \
+  arienkock/haproxy-alpn
+ExecReload=/usr/bin/docker kill -s HUP %n
+ExecStop=/usr/bin/docker stop -t 10 %n
+ExecStopPost=/usr/bin/docker rm -f %n
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+```
+
+# OpenSSL version
 
 Built with OpenSSL 1.0.2h as can be seen by running:
 
-```shell
+```sh
 $ docker run --rm haproxy-alpn haproxy -vv
 HA-Proxy version 1.6.6 2016/06/26
 Copyright 2000-2016 Willy Tarreau <willy@haproxy.org>
