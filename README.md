@@ -6,7 +6,7 @@ The usage is identical to the original, see https://hub.docker.com/_/haproxy/
 With the obvious exception that the image name should be `arienkock/haproxy-alpn`.
 
 ## Reloading
-As the official image README suggests, using signals you can reload the configuration for near-zero-downtime updates. However, __!!!IMPORTANT!!!__: if you mount the haproxy .cfg file as a file mount instead of a directory mount in Docker, changes will not be reflected and reloading will simply pick up the old config. That's because the container gets a COPY of the file if you mount a file rather than a directory containing the cfg file. Here is an example _Systemd_ service file you can use.
+As the official image README suggests, using signals you can reload the configuration for near-zero-downtime updates. However, __!!!IMPORTANT!!!__: if you mount the haproxy .cfg file as a file mount instead of a directory mount in Docker, changes will not be reflected and reloading will simply pick up the old config. That's because the container gets a COPY of the file if you mount a file rather than a directory containing the cfg file. Here is an example _Systemd_ service file you can use (notice the `ExecReload` line).
 
 ```
 [Unit]
