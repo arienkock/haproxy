@@ -32,8 +32,8 @@ WantedBy=multi-user.target
 Built with OpenSSL 1.0.2h as can be seen by running:
 
 ```sh
-$ docker run --rm haproxy-alpn haproxy -vv
-HA-Proxy version 1.6.6 2016/06/26
+$ docker run --rm arienkock/haproxy-alpn haproxy -vv
+HA-Proxy version 1.6.9 2016/08/30
 Copyright 2000-2016 Willy Tarreau <willy@haproxy.org>
 
 Build options :
