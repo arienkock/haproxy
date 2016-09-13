@@ -2,14 +2,14 @@ FROM debian:jessie
 
 RUN apt-get update && apt-get install -y libssl1.0.0 libpcre3 --no-install-recommends && rm -rf /var/lib/apt/lists/*
 
-ENV HAPROXY_MAJOR 1.6
-ENV HAPROXY_VERSION 1.6.6
-ENV HAPROXY_MD5 b418d83cf4f2da328f6eb8c255b8716b
-ENV OPENSSL_VERSION=1.0.2h
+ENV HAPROXY_MAJOR=1.6
+ENV HAPROXY_VERSION=1.6.6
+ENV HAPROXY_MD5=b418d83cf4f2da328f6eb8c255b8716b
+ENV OPENSSL_VERSION=1.1.0
 ENV WORK_DIR=/tmp/build
 ENV STATICLIBSSL=$WORK_DIR/staticlibssl
 
-RUN mkdir -p $WORK_DIR; cd $WORK_DIR; buildDeps='gcc libc6-dev libpcre3-dev zlib1g-dev make'; otherDeps='curl ca-certificates' \
+RUN mkdir -p $WORK_DIR; cd $WORK_DIR; buildDeps='gcc libc6-dev libpcre3-dev zlib1g-dev make perl5'; otherDeps='curl ca-certificates' \
 	&& apt-get update && apt-get install -y $buildDeps $otherDeps --no-install-recommends \
 	&& curl -O https://www.openssl.org/source/openssl-$OPENSSL_VERSION.tar.gz \
 	&& tar -zxf openssl-$OPENSSL_VERSION.tar.gz \
