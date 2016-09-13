@@ -3,8 +3,8 @@ FROM debian:jessie
 RUN apt-get update && apt-get install -y libssl1.0.0 libpcre3 --no-install-recommends && rm -rf /var/lib/apt/lists/*
 
 ENV HAPROXY_MAJOR=1.6
-ENV HAPROXY_VERSION=1.6.6
-ENV HAPROXY_MD5=b418d83cf4f2da328f6eb8c255b8716b
+ENV HAPROXY_VERSION=1.6.9
+ENV HAPROXY_MD5=c52eee40eb66f290d6f089c339b9d2b3
 ENV OPENSSL_VERSION=1.0.2h
 ENV WORK_DIR=/tmp/build
 ENV STATICLIBSSL=$WORK_DIR/staticlibssl
