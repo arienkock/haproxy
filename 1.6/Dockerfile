@@ -5,7 +5,7 @@ RUN apt-get update && apt-get install -y libssl1.0.0 libpcre3 --no-install-recom
 ENV HAPROXY_MAJOR=1.6
 ENV HAPROXY_VERSION=1.6.9
 ENV HAPROXY_MD5=c52eee40eb66f290d6f089c339b9d2b3
-ENV OPENSSL_VERSION=1.0.2h
+ENV OPENSSL_VERSION=1.0.2j
 ENV WORK_DIR=/tmp/build
 ENV STATICLIBSSL=$WORK_DIR/staticlibssl
 

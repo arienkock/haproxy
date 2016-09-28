@@ -49,8 +49,8 @@ Default settings :
 Encrypted password support via crypt(3): yes
 Built with zlib version : 1.2.8
 Compression algorithms supported : identity("identity"), deflate("deflate"), raw-deflate("deflate"), gzip("gzip")
-Built with OpenSSL version : OpenSSL 1.0.2h  3 May 2016
-Running on OpenSSL version : OpenSSL 1.0.2h  3 May 2016
+Built with OpenSSL version : OpenSSL 1.0.2j  26 Sep 2016
+Running on OpenSSL version : OpenSSL 1.0.2j  26 Sep 2016
 OpenSSL library supports TLS extensions : yes
 OpenSSL library supports SNI : yes
 OpenSSL library supports prefer-server-ciphers : yes
