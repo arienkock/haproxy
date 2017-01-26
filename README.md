@@ -33,7 +33,7 @@ Built with OpenSSL 1.0.2h as can be seen by running:
 
 ```sh
 $ docker run --rm arienkock/haproxy-alpn haproxy -vv
-HA-Proxy version 1.6.9 2016/08/30
+HA-Proxy version 1.6.11 2016/12/25
 Copyright 2000-2016 Willy Tarreau <willy@haproxy.org>
 
 Build options :
@@ -48,6 +48,7 @@ Default settings :
 
 Encrypted password support via crypt(3): yes
 Built with zlib version : 1.2.8
+Running on zlib version : 1.2.8
 Compression algorithms supported : identity("identity"), deflate("deflate"), raw-deflate("deflate"), gzip("gzip")
 Built with OpenSSL version : OpenSSL 1.0.2j  26 Sep 2016
 Running on OpenSSL version : OpenSSL 1.0.2j  26 Sep 2016
@@ -55,6 +56,7 @@ OpenSSL library supports TLS extensions : yes
 OpenSSL library supports SNI : yes
 OpenSSL library supports prefer-server-ciphers : yes
 Built with PCRE version : 8.35 2014-04-04
+Running on PCRE version : 8.35 2014-04-04
 PCRE library supports JIT : yes
 Built without Lua support
 Built with transparent proxy support using: IP_TRANSPARENT IPV6_TRANSPARENT IP_FREEBIND
