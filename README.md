@@ -50,8 +50,8 @@ Encrypted password support via crypt(3): yes
 Built with zlib version : 1.2.8
 Running on zlib version : 1.2.8
 Compression algorithms supported : identity("identity"), deflate("deflate"), raw-deflate("deflate"), gzip("gzip")
-Built with OpenSSL version : OpenSSL 1.0.2j  26 Sep 2016
-Running on OpenSSL version : OpenSSL 1.0.2j  26 Sep 2016
+Built with OpenSSL version : OpenSSL 1.0.2k  26 Jan 2017
+Running on OpenSSL version : OpenSSL 1.0.2k  26 Jan 2017
 OpenSSL library supports TLS extensions : yes
 OpenSSL library supports SNI : yes
 OpenSSL library supports prefer-server-ciphers : yes
@@ -69,4 +69,5 @@ Total: 3 (3 usable), will use epoll.
 
 <7>haproxy-systemd-wrapper: executing /usr/local/sbin/haproxy -p /run/haproxy.pid -vv -Ds
 <5>haproxy-systemd-wrapper: exit, haproxy RC=0
+
 ```

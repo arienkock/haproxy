@@ -5,11 +5,11 @@ RUN apt-get update && apt-get install -y libssl1.0.0 libpcre3 --no-install-recom
 ENV HAPROXY_MAJOR=1.6
 ENV HAPROXY_VERSION=1.6.11
 ENV HAPROXY_MD5=844da4b553c887833550a008692e7a74
-ENV OPENSSL_VERSION=1.0.2j
+ENV OPENSSL_VERSION=1.0.2k
 ENV WORK_DIR=/tmp/build
 ENV STATICLIBSSL=$WORK_DIR/staticlibssl
 
-RUN mkdir -p $WORK_DIR; cd $WORK_DIR; buildDeps='gcc libc6-dev libpcre3-dev zlib1g-dev make'; otherDeps='curl ca-certificates' \
+RUN mkdir -p $WORK_DIR; cd $WORK_DIR; buildDeps='gcc libc6-dev libpcre3-dev zlib1g-dev perl-modules make'; otherDeps='curl ca-certificates' \
 	&& apt-get update && apt-get install -y $buildDeps $otherDeps --no-install-recommends \
 	&& curl -O https://www.openssl.org/source/openssl-$OPENSSL_VERSION.tar.gz \
 	&& tar -zxf openssl-$OPENSSL_VERSION.tar.gz \
