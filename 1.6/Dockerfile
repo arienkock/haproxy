@@ -34,8 +34,8 @@ RUN mkdir -p $WORK_DIR; cd $WORK_DIR; buildDeps='gcc libc6-dev libpcre3-dev zlib
 		all \
 		install-bin \
 	&& mkdir -p /usr/local/etc/haproxy \
-	&& cp -R /usr/src/haproxy/examples/errorfiles /usr/local/etc/haproxy/errors \
-	&& rm -rf /usr/src/haproxy \
+	&& cp -R $WORK_DIR/haproxy/examples/errorfiles /usr/local/etc/haproxy/errors \
+	&& rm -rf $WORK_DIR/haproxy \
 	\
 	&& apt-get purge -y --auto-remove $buildDeps
 
