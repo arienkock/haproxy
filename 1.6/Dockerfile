@@ -1,11 +1,16 @@
-FROM debian:jessie
+FROM debian:jessie-backports
 
-RUN apt-get update && apt-get install -y libssl1.0.0 libpcre3 --no-install-recommends && rm -rf /var/lib/apt/lists/*
+RUN apt-get update \
+	&& apt-get install -y --no-install-recommends \
+		liblua5.3-0 \
+		libpcre3 \
+		libssl1.0.0 \
+	&& rm -rf /var/lib/apt/lists/*
 
 ENV HAPROXY_MAJOR=1.6
-ENV HAPROXY_VERSION=1.6.11
-ENV HAPROXY_MD5=844da4b553c887833550a008692e7a74
-ENV OPENSSL_VERSION=1.0.2k
+ENV HAPROXY_VERSION=1.6.13
+ENV HAPROXY_MD5=782947642c0c7983f73624d8d45e2321
+ENV OPENSSL_VERSION=1.0.2l
 ENV WORK_DIR=/tmp/build
 ENV STATICLIBSSL=$WORK_DIR/staticlibssl
 
@@ -17,7 +22,7 @@ RUN mkdir -p $WORK_DIR; cd $WORK_DIR; buildDeps='gcc libc6-dev libpcre3-dev zlib
 	&& ./config --prefix=$STATICLIBSSL --openssldir=/etc/ssl --libdir=lib no-shared zlib-dynamic \
 	&& make && make install_sw \
 	&& curl -SL "http://www.haproxy.org/download/${HAPROXY_MAJOR}/src/haproxy-${HAPROXY_VERSION}.tar.gz" -o haproxy.tar.gz \
-	&& echo "${HAPROXY_MD5}  haproxy.tar.gz" | md5sum -c \
+	&& echo "${HAPROXY_MD5} *haproxy.tar.gz" | md5sum -c \
 	&& mkdir -p $WORK_DIR/haproxy \
 	&& tar -xzf haproxy.tar.gz -C $WORK_DIR/haproxy --strip-components=1 \
 	&& rm haproxy.tar.gz \
@@ -28,7 +33,10 @@ RUN mkdir -p $WORK_DIR; cd $WORK_DIR; buildDeps='gcc libc6-dev libpcre3-dev zlib
 		USE_ZLIB=1 ADDLIB=-ldl \
 		all \
 		install-bin \
+	&& mkdir -p /usr/local/etc/haproxy \
+	&& cp -R /usr/src/haproxy/examples/errorfiles /usr/local/etc/haproxy/errors \
 	&& rm -rf /usr/src/haproxy \
+	\
 	&& apt-get purge -y --auto-remove $buildDeps
 
 
